@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
@@ -11,13 +11,22 @@ module.exports = function(grunt) {
         src: 'src/<%= pkg.name %>.js',
         dest: 'build/<%= pkg.name %>.min.js'
       }
-    }
+    },
+    jshint: {
+      build: {
+        src: ['src/**/*.js'],
+        options: {
+          jshintrc: "./.jshintrc"
+        }
+      }
+    },
   });
 
   // 加载包含 "uglify" 任务的插件。
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // 默认被执行的任务列表。
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['uglify','jshint']);
 
 };

@@ -1,3 +1,3 @@
-const test = require('./test')
+var test = require('./test')
 
-console.log(test(1,3)) 
+console.log(test(1,3))
